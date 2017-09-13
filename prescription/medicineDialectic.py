@@ -6,17 +6,18 @@ import re
 import codecs
 import json
 
+
+from AdjustSort import adjustPrescriptionSortTwo
+from utils.medicineVec import read4Vec
 from utils.fliggy import Fliggy
-from AdjustSort import adjustPrescriptionSort
-from medicineVec import read4Vec
 
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
 
 
 def strlineWord2par2(str, uPar1, uPar2):
-    ret = re.split(u'\uff0c|\u3002|\u3001|ff01', str)
+    ret = re.split(u'\uff0c|\u3002|\u3001|\uff01|\uff1b', str)
     ti = 0
     while ti < len(ret):
         retone = re.search(uPar1, ret[ti])
@@ -36,7 +37,7 @@ def strlineWord2par2(str, uPar1, uPar2):
 
 
 def strlineWord2par3(str, uPar1, uPar2, uPar3):
-    ret = re.split(u'\uff0c|\u3002|\u3001|ff01', str)
+    ret = re.split(u'\uff0c|\u3002|\u3001|\uff01|\uff1b', str)
     ti = 0
     while ti < len(ret):
         retone = re.search(uPar1, ret[ti])
@@ -60,7 +61,7 @@ def strlineWord2par3(str, uPar1, uPar2, uPar3):
 
 
 def strlineWord2par4(str, uPar1, uPar2, uPar3, uPar4):
-    ret = re.split(u'\uff0c|\u3002|\u3001|ff01', str)
+    ret = re.split(u'\uff0c|\u3002|\u3001|\uff01|\uff1b', str)
     ti = 0
     while ti < len(ret):
         retone = re.search(uPar1, ret[ti])
@@ -256,6 +257,7 @@ def readDict2list(allftext, listout):
     listSerout4 = []
 
     fg = Fliggy()
+
     fdict2 = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\dict2.txt', 'r', 'utf-8')
     fdict3 = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\dict3.txt', 'r', 'utf-8')
     fdict4 = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\dict4.txt', 'r', 'utf-8')
@@ -270,31 +272,27 @@ def readDict2list(allftext, listout):
 
     for eachText in fdict2Text:
         eachText = fg.fliggy(eachText.strip('\r\n'))
-        eText = unicode(eachText).split(' ')
-        listWordVec2.append(eText[0])
-        listWordVec2.append(eText[1])
-        listWordVec2.append(eText[2])
-
-    # print "----listWordVec2-----"
-    # print listWordVec2[3]
-    # print fdict2Text[3]
+        eText = eachText.split(' ')
+        listWordVec2.append(unicode(eText[0]))
+        listWordVec2.append(unicode(eText[1]))
+        listWordVec2.append(unicode(eText[2]))
 
     for eachText in fdict3Text:
         eachText = fg.fliggy(eachText.strip('\r\n'))
         eText = eachText.split(' ')
-        listWordVec3.append(eText[0])
-        listWordVec3.append(eText[1])
-        listWordVec3.append(eText[2])
-        listWordVec3.append(eText[3])
+        listWordVec3.append(unicode(eText[0]))
+        listWordVec3.append(unicode(eText[1]))
+        listWordVec3.append(unicode(eText[2]))
+        listWordVec3.append(unicode(eText[3]))
 
     for eachText in fdict4Text:
         eachText = fg.fliggy(eachText.strip('\r\n'))
         eText = eachText.split(' ')
-        listWordVec4.append(eText[0])
-        listWordVec4.append(eText[1])
-        listWordVec4.append(eText[2])
-        listWordVec4.append(eText[3])
-        listWordVec4.append(eText[4])
+        listWordVec4.append(unicode(eText[0]))
+        listWordVec4.append(unicode(eText[1]))
+        listWordVec4.append(unicode(eText[2]))
+        listWordVec4.append(unicode(eText[3]))
+        listWordVec4.append(unicode(eText[4]))
 
     strwordVec2Serialize(allftext, listWordVec2, listSerout2, 3)
     strwordVec2Serialize(allftext, listWordVec3, listSerout3, 4)
@@ -319,6 +317,7 @@ def strreadDict2list(allftext, listout):
     listSerout4 = []
 
     fg = Fliggy()
+
     fdict2 = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\dict2.txt', 'r', 'utf-8')
     fdict3 = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\dict3.txt', 'r', 'utf-8')
     fdict4 = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\dict4.txt', 'r', 'utf-8')
@@ -333,27 +332,27 @@ def strreadDict2list(allftext, listout):
 
     for eachText in fdict2Text:
         eachText = fg.fliggy(eachText.strip('\r\n'))
-        eText = unicode(eachText).split(' ')
-        listWordVec2.append(eText[0])
-        listWordVec2.append(eText[1])
-        listWordVec2.append(eText[2])
+        eText = eachText.split(' ')
+        listWordVec2.append(unicode(eText[0]))
+        listWordVec2.append(unicode(eText[1]))
+        listWordVec2.append(unicode(eText[2]))
 
     for eachText in fdict3Text:
         eachText = fg.fliggy(eachText.strip('\r\n'))
         eText = eachText.split(' ')
-        listWordVec3.append(eText[0])
-        listWordVec3.append(eText[1])
-        listWordVec3.append(eText[2])
-        listWordVec3.append(eText[3])
+        listWordVec3.append(unicode(eText[0]))
+        listWordVec3.append(unicode(eText[1]))
+        listWordVec3.append(unicode(eText[2]))
+        listWordVec3.append(unicode(eText[3]))
 
     for eachText in fdict4Text:
         eachText = fg.fliggy(eachText.strip('\r\n'))
         eText = eachText.split(' ')
-        listWordVec4.append(eText[0])
-        listWordVec4.append(eText[1])
-        listWordVec4.append(eText[2])
-        listWordVec4.append(eText[3])
-        listWordVec4.append(eText[4])
+        listWordVec4.append(unicode(eText[0]))
+        listWordVec4.append(unicode(eText[1]))
+        listWordVec4.append(unicode(eText[2]))
+        listWordVec4.append(unicode(eText[3]))
+        listWordVec4.append(unicode(eText[4]))
 
     strwordVec2Serialize(allftext, listWordVec2, listSerout2, 3)
     strwordVec2Serialize(allftext, listWordVec3, listSerout3, 4)
@@ -372,6 +371,7 @@ def strreadDict2list(allftext, listout):
 def vecConflict(listin):
     listpos = []
     listneg = []
+
     fg = Fliggy()
     fcon = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\vecconflict.txt', 'r', 'utf-8')
     try:
@@ -406,29 +406,29 @@ def readWeight2mat(dict):
 
 def readPrecriptions2mat(listin):
     file = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\prescriptions.txt', 'r', 'utf-8')
+    fg = Fliggy()
     try:
         fileText = file.readlines()
     finally:
         file.close()
-    fg = Fliggy()
+
     for eachText in fileText:
         eachText = fg.fliggy(eachText.strip('\r\n'))
         listin.append(unicode(eachText))
-    return listin
 
 
 def readSheetFormat(dict):
     file = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\liujinsheetformat.txt', 'r', 'utf-8')
+    fg = Fliggy()
     try:
         fileText = file.readlines()
     finally:
         file.close()
 
-    fg = Fliggy()
     for eachText in fileText:
         eachText = fg.fliggy(eachText.strip('\r\n'))
         eText = eachText.split(' ')
-        dict.setdefault(eText[0], eText[1])
+        dict.setdefault(unicode(eText[0]), unicode(eText[1]))
 
         # print "readSheetFormat"
         # print dict
@@ -436,16 +436,15 @@ def readSheetFormat(dict):
 
 def readFilter(listout):
     file = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\filter.txt', 'r', 'utf-8')
+    fg = Fliggy()
     try:
         fileText = file.readlines()
     finally:
         file.close()
     # print "------readFilter-----"
-    fg = Fliggy()
     for eachText in fileText:
         eachText = fg.fliggy(eachText.strip('\r\n'))
-        # print eachText
-        listout.append(eachText)
+        listout.append(unicode(eachText))
 
 
 def rank4Precription2(listpre, listrow, listout):
@@ -469,8 +468,6 @@ def rank4Precription3(listpre, listrow, listout, listpmfrom):
             listout.append(listpre[listrow[i]])
             listout.append(listpmfrom[listrow[i]])
         i += 2
-
-
 
 def findSheeteach(strin, dict, filterList, lenfilter, listout):
     eText = strin.split(u'\u3002')
@@ -498,32 +495,62 @@ def findSheeteach(strin, dict, filterList, lenfilter, listout):
 
 def read4Pmfrom(listin):
     fromfile = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\pmfrom.txt', 'r', 'utf-8')
+    fg = Fliggy()
     try:
         fileText = fromfile.readlines()
     finally:
         fromfile.close()
 
-    fg = Fliggy()
     for eachText in fileText:
         eachText = fg.fliggy(eachText.strip('\r\n'))
         listin.append(unicode(eachText))
-    return listin
+
+
+def RestMedicineGroup(pmfrom):
+    """
+    :param pmfrom: 开方原因
+    :return: 将开方原因拆分成prescriptionName、sourceFrom、medicineReference三部分
+            prescriptionName：主药方名
+            sourceFrom：来源
+            medicineReference：pmfrom主药方名和来源之间的那句话
+    """
+    prescriptionName = pmfrom.split(u"，")[0]
+    if pmfrom.find(u"--") is not -1:
+        sourceFrom = pmfrom[pmfrom.find(u"--") + 2:]
+        medicineReference = pmfrom[pmfrom.find(prescriptionName) + len(prescriptionName) + 1:pmfrom.find(u"--")]
+    else:
+        sourceFrom = ""
+        medicineReference = pmfrom[pmfrom.find(prescriptionName) + len(prescriptionName) + 1:]
+    return [prescriptionName, sourceFrom, medicineReference]
+
+def rewriteListRankPre(listRankPre,listRowRank,listin):
+    """
+    :param listRankPre:
+    :return: 将每条返回结果拆分成列表形式[prescriptionName，sourceFrom，medicineReference，prescriptionGroup,weight]
+    """
+    newListRankPre = adjustPrescriptionSortTwo(listRankPre, listRowRank, listin)
+    listRankPred = []
+    if len(newListRankPre) > 0:
+        i = 0
+        while i < len(newListRankPre):
+            tempElement1 = RestMedicineGroup(newListRankPre[i+1])
+            tempElement2 = tempElement1 + [newListRankPre[i]]
+            tempElement3 = tempElement2 + [unicode(newListRankPre[i+2])]
+            listRankPred.append(tempElement3)
+            i = i + 3
+        return listRankPred
+    else:
+        return []
 
 
 def rank4Medicine(patientSay, patientSheet):
     ff = codecs.open(r'F:\wushijia\workspace\medicineDialecticFileAes\pm.txt', 'r', 'utf-8')
-    # ff = codecs.open(r'F:\wushijia\workspace\medicineDialecticFilec\pm.txt', 'r', 'utf-8')
     fg = Fliggy()
     try:
         allText = []
         for line in ff.readlines():
             line = line[:line.find('\r')]
-            # print unicode(fg.fliggy(line))
             allText.append(unicode(fg.fliggy(line)))
-            # allText.append(line)
-        # print allText
-        # print ff.readlines()
-        # allText = fg.fliggy(allText)
         lenallText = len(allText)
     finally:
         ff.close()
@@ -553,14 +580,13 @@ def rank4Medicine(patientSay, patientSheet):
 
     listSheetVeced = list(set(listSheetVec))
     listSheetVeced.sort(key=listSheetVec.index)
-    # print "----listSheetVeced-----"
-    # print listSheetVeced
+
 
     readDict2list(allftext, listwordvec)
     vecConflict(listwordvec)
 
-    for item in listSheetVeced:
-        listwordvec.append(item)
+    #for item in listSheetVeced:
+    #    listwordvec.append(item)
 
     listwordveced = list(set(listwordvec))
     listwordveced.sort(key=listwordvec.index)
@@ -575,11 +601,17 @@ def rank4Medicine(patientSay, patientSheet):
     read4Pmfrom(listPmfrom)
 
     rank4Precription3(listPrescription, listRowRank, listRankPre, listPmfrom)
-    listRankSorts = adjustPrescriptionSort(listRankPre, read4Vec(allftext)[0], threshold=0.25)
 
-    # return listRankPre
-    return listRankSorts
+    rewritelistRankPred = rewriteListRankPre(listRankPre, listRowRank, read4Vec(allftext)[0])
 
+    # for item in rewritelistRankPred:
+    #     for eachItem in item:
+    #         print eachItem
+    
+    return rewritelistRankPred
 
-
-
+#
+#
+# patientSay = u"项强，无汗，恶风"
+# patientSheet= ""
+# print rank4Medicine(patientSay, patientSheet)

@@ -4,7 +4,7 @@ import time
 import MySQLdb
 import sys
 
-from medicineVec import strlineWord2par2, strlineWord2par3, strlineWord2par4
+from utils.medicineVec import strlineWord2par2, strlineWord2par3, strlineWord2par4
 
 reload(sys)
 
@@ -591,7 +591,8 @@ def loop(conn):
 
 def callBatchWrite():
     conn = MySQLdb.connect("127.0.0.1", "root", "w1020392881", "candyonline", use_unicode=True, charset="utf8")
-    batchWrite(conn, "medicine_operation", r'F:\wushijia\workspace\814\pmtotall0814.txt')
+    # conn = MySQLdb.connect("39.108.2.147", "root", "Jaris->pwd=w1020392881", "candyonline", use_unicode=True, charset="utf8")
+    batchWrite(conn, "medicine_operation", r'F:\wushijia\workspace\912\pmtotall0912.txt')
     conn.close()
 
 # command()

@@ -34,8 +34,8 @@ def getListout(lis):
         medicinexPRVals = []
         index_res = []
 
-        for x in num_lis:
-            print x
+        # for x in num_lis:
+        #     print x
 
         for x in range(len(num_lis)):
             sql = "select medicine1PR,medicine2PR,medicine3PR,medicine4PR,medicine5PR,medicine6PR,medicine7PR," \
