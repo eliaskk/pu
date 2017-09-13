@@ -33,15 +33,12 @@ class Fliggy():
 
 if __name__ == '__main__':
     fg = Fliggy()
-    e = fg.encrypt("87,10,19,77,143,14,38,257,165,378,481,579,596,632,644,41,446,519")
-    print e
-    # d = fg.fliggy(e)
-    # print d
-    # print '-'
-    # fgfdict2 = open(r'F:\wushijia\workspace\726\update\weight2q.txt', 'r')
-    # fgfdict2Text = fgfdict2.readlines()
-    # fgfdict2.close()
-    # for line in fgfdict2Text:
-    #     line = line[:line.find('\n')]
-    #     print fg.encrypt(line)
+    # pmfromf = open(r'F:\wushijia\workspace\medicineDialecticFileAes\pmfrom.txt', 'r')
+    # pmfrom = pmfromf.readlines()
+    # pmfromf.close()
+    # print fg.fliggy("fb5dd904084ce7d2c5294db3c5d8cbbc5f3fcafbc6a61520f6510d160b34ee4c")
+    # print fg.encrypt("经前感觉")
+    # for line in pmfrom:
+    #     print line
+    #     print fg.fliggy(line.strip('\r\n'))
 

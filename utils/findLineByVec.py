@@ -1,16 +1,16 @@
 # _*_ encoding:utf-8 _*_
 import re, codecs
 
+from fliggy import Fliggy
+
 
 def findNear(lis):
     res = []
-    # lis = lis.split(u',')
-    # nearVec = codecs.open(r"F:\nearVec.txt", "r", "utf8")
     nearVec = codecs.open(r"F:\wushijia\workspace\medicineDialecticFilec\nearVec.txt", "r", "utf8")
     nearVecs = nearVec.read()
     nearVec.close()
     for x in lis:
-        res += re.findall('\d+', ''.join(re.findall('\D+'+x+' \d+', nearVecs)))
+        res += re.findall('\d+', ''.join(re.findall('\D+' + x + ' \d+', nearVecs)))
     res += lis
     res = list(set(res))
     return res

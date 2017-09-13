@@ -24,6 +24,7 @@ def readPulseDict():
     for eachText in fConfigText:
         eachText = fg.fliggy(eachText.strip('\r\n'))
         # eachText = eachText.strip('\r\n')
+        # print eachText
         listPulseDict.append(eachText)
     return listPulseDict
 
@@ -48,7 +49,7 @@ def readGroupDict():
         eachText = unicode(fg.fliggy(eachText.strip('\r\n')))
         # eachText = fg.fliggy(eachText.strip('\r\n'))
         eText = re.split(u"\uff1a|\u0020", eachText)
-        listGroupDict.append([eText[0],re.split(u',',eText[1]),float(eText[2])])  #listGroupDict每个元素的构成[药方 组合 组合概率]
+        listGroupDict.append([eText[0], re.split(u',',eText[1]),float(eText[2])])  #listGroupDict每个元素的构成[药方 组合 组合概率]
         if eText[0] not in listMedicineName:
             listMedicineName.append(eText[0])
     return listGroupDict,listMedicineName

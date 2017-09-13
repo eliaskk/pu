@@ -1,14 +1,24 @@
 # _*_ encoding:utf-8 _*_
-import requests
 
 
-def use_params_requests():
-    URL_IP = "http://static.dev.studio.dajiazhongyi.com:8081/search/cases"
-    params = {"patientSay": "发烧，头痛，有汗，怕冷，经期，脉弦细，舌苔白腻"}
-    response = requests.post(URL_IP, json=params)
-#     print 'response Headers:'
-#     print response.headers
-#     print 'response Body:'
-    print response.content
-#
-# use_params_requests()
+class Parent:
+    def __init__(self):
+        print "父类初始化了"
+
+    def show(self):
+        print "this is parent's show"
+
+
+class Child(Parent):
+    sex = "man"
+
+    def __init__(self):
+        Parent.__init__(self)
+        print "子类初始化了"
+
+    def show(self):
+        print self.__sex
+        print "this is child's show"
+
+c = Child()
+print c.sex

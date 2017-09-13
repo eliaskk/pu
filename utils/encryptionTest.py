@@ -3,28 +3,32 @@ import os
 from fliggy import Fliggy
 
 
-def scanDir():
-    rootdir = r"F:\wushijia\workspace\814\update"
+def scanDir(rootdir):
+    """ 扫描整个目录下的文件
+
+    :param rootdir: 要扫描的目录路径
+    :return:
+    """
     for parent, dirnames, filenames in os.walk(rootdir):
         for filename in filenames:
-            # print "parent is:" +parent
-            # print "dirname is:"+dirname
             yield filename
 
 
-def read(fileName):
-    # fileName = 'dict3.txt'
+def read(fileName, rootdir, targetdir):
+    """ 对源文件进行加密
+
+    :param fileName: 要加密的源文件名
+    :param rootdir: 源文件所在目录
+    :param targetdir: 存放生成文件的目标目录
+    :return:
+    """
     try:
-        f = open(r'F:\wushijia\workspace\814\update\\'+fileName, 'r')
-        f_w = open(r'C:\Users\admin\Desktop\\'+fileName, 'w')
+        f = open(rootdir+r'\\'+fileName, 'r')
+        f_w = open(targetdir+r'\\'+fileName, 'w')
         fg = Fliggy()
 
         for line in f.readlines():
             line = line[:line.find('\r')]
-            # print fg.encrypt(line)
-            # print fg.fliggy(line)
-            # print fg.encrypt(line)
-            print fg.encrypt(line)
             f_w.write(fg.encrypt(line)+'\n')
     finally:
         f.close()
@@ -33,9 +37,16 @@ def read(fileName):
 
 
 def encryption():
-    for x in scanDir():
-        # pass
-        print x, read(x)
+    """ 对某一文件夹下的所有文件进行加密
+        rootdir：文件夹绝对路径
+        targetdir：存放生成文件的目标目录
+    :return:
+    """
+    rootdir = r"F:\wushijia\workspace\912\update"
+    targetdir = r"C:\Users\admin\Desktop"
+    for x in scanDir(rootdir):
+        print x, read(x, rootdir, targetdir)
+
 
 # encryption()
-# read('pmfrom.txt')
+# read('pm.txt', r"F:\wushijia\workspace\medicineDialecticFilec", r"C:\Users\admin\Desktop")

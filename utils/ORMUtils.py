@@ -73,5 +73,5 @@ class OrmTest(object):
         self.session.delete(new_obj)
         self.session.commit()
 
-obj = OrmTest()
-obj.delete_data(2)
+# obj = OrmTest()
+# obj.delete_data(2)

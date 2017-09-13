@@ -14,7 +14,7 @@ from fliggy import Fliggy
 
 
 def strlineWord2par2(str, uPar1, uPar2):
-    ret = re.split(u'\uff0c|\u3002|\u3001|ff01|\uff1b', str)
+    ret = re.split(u'\uff0c|\u3002|\u3001|\uff01|\uff1b|\u002c', str)
     ti = 0
     while ti < len(ret):
         retone = re.search(uPar1, ret[ti])
@@ -34,7 +34,7 @@ def strlineWord2par2(str, uPar1, uPar2):
 
 
 def strlineWord2par3(str, uPar1, uPar2, uPar3):
-    ret = re.split(u'\uff0c|\u3002|\u3001|ff01|\uff1b', str)
+    ret = re.split(u'\uff0c|\u3002|\u3001|\uff01|\uff1b|\u002c', str)
     ti = 0
     while ti < len(ret):
         retone = re.search(uPar1, ret[ti])
@@ -58,7 +58,7 @@ def strlineWord2par3(str, uPar1, uPar2, uPar3):
 
 
 def strlineWord2par4(str, uPar1, uPar2, uPar3, uPar4):
-    ret = re.split(u'\uff0c|\u3002|\u3001|ff01|\uff1b', str)
+    ret = re.split(u'\uff0c|\u3002|\u3001|\uff01|\uff1b|\u002c', str)
     ti = 0
     while ti < len(ret):
         retone = re.search(uPar1, ret[ti])
